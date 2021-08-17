@@ -11,11 +11,15 @@ set(HEADERS
     GroupContainer.h
     Mem.h
     MemoryManager.h
-
+    SetAbstract.h
+    Set.h
+    Test.h
     )
 
 set(SOURCE
     main.cpp
+    Test.cpp
+    Set.cpp
     )
 
 add_executable(ProgramSet ${SOURCE} ${HEADERS})
