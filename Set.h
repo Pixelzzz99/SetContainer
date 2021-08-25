@@ -23,8 +23,8 @@ class Set : public AbstractSet
 
         size_t _memory;
         Element** _elements;
-
         unsigned int _count_elements;
+         
     public:
 
         //Constructor and destructor
@@ -34,10 +34,13 @@ class Set : public AbstractSet
         class Iterator : public AbstractSet::Iterator
         {
         private:
-            void* currentElement;
+            Element* currentElement;
         public:
             Iterator();
+            Iterator(Element*);
             ~Iterator();
+            
+            void setCurrentElement(Element* element);
 
             void* getElement(size_t& size) override;
             bool hasNext() override;

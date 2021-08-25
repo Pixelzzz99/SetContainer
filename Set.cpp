@@ -26,31 +26,50 @@ size_t Set::Element::getSize()
     return this->_size;
 }
 
+//---------------------------------------------------------------------
+
 Set::Iterator::Iterator()
 {
+    this->currentElement = nullptr;
+}
 
+Set::Iterator::Iterator(Element *element)
+{
+    this->currentElement = element;
 }
 
 Set::Iterator::~Iterator() = default;
 
+void setCurrentElement(Element *element)
+{
+    this->currentElement = element;
+}
+
 void* Set::Iterator::getElement(size_t& size)
 {
-    return currentElement;
+    if(curElement == nullptr)
+    {
+        throw Container::Error("Can't give element the iterator points to an empty element");
+    }
+    size = curElement->getSize();
+    return currentElement->_content;
 }
 
 bool Set::Iterator::hasNext()
 {
-    return false;
+    return if((this->currentElement == nullptr) || (*(this->currentElement + 1) == nullptr)) ? false : true;
 }
 
 void Set::Iterator::goToNext()
 {
-    return;
+    if(!this->hasNext())
+        throw Container::Error("no next element");
+    this->currentElement = *(this->currentElement + 1);
 }
 
 bool Set::Iterator::equals(Container::Iterator* right)
 {
-    return false;
+    return if((dynamic_cast<Iterator*>(right)->currentElement == this->currentElement)) ? true : false;
 }
 
 
@@ -67,6 +86,7 @@ Set::Set(MemoryManager &mem) : AbstractSet(mem)
     this->_memory = mem.size();
 }
 
+//TODO destructor
 Set::~Set()
 {
     clear();
@@ -82,6 +102,7 @@ void Set::free_mem(void * ptr)
     Container::_memory.freeMem(ptr);
 }
 
+//TODO unique function and Sort method
 int Set::insert(void* element, size_t size)
 {
     if(checkMemory(size)) return 1;
@@ -89,15 +110,11 @@ int Set::insert(void* element, size_t size)
     Element* newElement = static_cast<Element*>(alloc_mem(sizeof(Element)));
     newElement->_content = alloc_mem(size);
     newElement->setSize(size);
-
     std::memcpy(newElement->_content, element, size);
-    if(this->_count_elements == 0)
-    {
-        this->_elements = new Element*[_count_elements+1];
-    }
-    std::cout<<(int&)newElement->_content<<std::endl;
+ 
+    this->_elements = new Element*[_count_elements+1];
+
     this->_elements[this->_count_elements] = newElement;
-    std::cout<< *(int*)this->_elements[this->_count_elements]->_content << std::endl; 
 
     this->_memory -= size;
     this->_count_elements++;
@@ -123,8 +140,10 @@ size_t Set::max_bytes()
     return this->_memory;
 }
 
+//TODO find Method
 Set::Iterator* Set::find(void* elem, size_t size)
 {
+
     return new Iterator();
 }
 
@@ -135,19 +154,31 @@ Set::Iterator* Set::newIterator()
 
 Set::Iterator* Set::begin()
 {
-    return new Iterator();
+    if(this->empty())
+        return this->Iterator();
+
+    if(_elements[0] == nullptr)
+        return this->newIterator();
+    return new Iterator(_elements[0]);
 }
 
 Set::Iterator* Set::end()
 {
-    return new Iterator();
+    if(this->empty())
+        return this->newIterator();
+
+    if(_elements[0] == nullptr)
+        return this->newIterator();
+
+    return new Iterator(_elements[_count_elements-1]);
 }
 
+//TODO remove Method
 void Set::remove(Container::Iterator* iter)
 {
     
 }
-
+//TODO clear Method
 void Set::clear()
 {
 
