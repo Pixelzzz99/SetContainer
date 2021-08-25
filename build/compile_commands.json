@@ -1,17 +1,17 @@
 [
 {
   "directory": "D:/projects/Set_Container/build",
-  "command": "C:\\PROGRA~1\\mingw64\\bin\\G__~1.EXE   -std=gnu++14 -o CMakeFiles\\ProgramSet.dir\\main.cpp.obj -c D:\\projects\\Set_Container\\main.cpp",
+  "command": "C:\\PROGRA~1\\mingw64\\bin\\X86_64~2.EXE   -g -std=gnu++14 -o CMakeFiles\\ProgramSet.dir\\main.cpp.obj -c D:\\projects\\Set_Container\\main.cpp",
   "file": "D:/projects/Set_Container/main.cpp"
 },
 {
   "directory": "D:/projects/Set_Container/build",
-  "command": "C:\\PROGRA~1\\mingw64\\bin\\G__~1.EXE   -std=gnu++14 -o CMakeFiles\\ProgramSet.dir\\Test.cpp.obj -c D:\\projects\\Set_Container\\Test.cpp",
+  "command": "C:\\PROGRA~1\\mingw64\\bin\\X86_64~2.EXE   -g -std=gnu++14 -o CMakeFiles\\ProgramSet.dir\\Test.cpp.obj -c D:\\projects\\Set_Container\\Test.cpp",
   "file": "D:/projects/Set_Container/Test.cpp"
 },
 {
   "directory": "D:/projects/Set_Container/build",
-  "command": "C:\\PROGRA~1\\mingw64\\bin\\G__~1.EXE   -std=gnu++14 -o CMakeFiles\\ProgramSet.dir\\Set.cpp.obj -c D:\\projects\\Set_Container\\Set.cpp",
+  "command": "C:\\PROGRA~1\\mingw64\\bin\\X86_64~2.EXE   -g -std=gnu++14 -o CMakeFiles\\ProgramSet.dir\\Set.cpp.obj -c D:\\projects\\Set_Container\\Set.cpp",
   "file": "D:/projects/Set_Container/Set.cpp"
 }
 ]

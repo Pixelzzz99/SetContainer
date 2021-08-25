@@ -17,5 +17,12 @@ CMakeFiles/ProgramSet.dir/Test.cpp.obj: ../SetAbstract.h
 CMakeFiles/ProgramSet.dir/Test.cpp.obj: ../Test.cpp
 CMakeFiles/ProgramSet.dir/Test.cpp.obj: ../Test.h
 
+CMakeFiles/ProgramSet.dir/main.cpp.obj: ../Container.h
+CMakeFiles/ProgramSet.dir/main.cpp.obj: ../GroupContainer.h
+CMakeFiles/ProgramSet.dir/main.cpp.obj: ../Mem.h
+CMakeFiles/ProgramSet.dir/main.cpp.obj: ../MemoryManager.h
+CMakeFiles/ProgramSet.dir/main.cpp.obj: ../Set.h
+CMakeFiles/ProgramSet.dir/main.cpp.obj: ../SetAbstract.h
+CMakeFiles/ProgramSet.dir/main.cpp.obj: ../Test.h
 CMakeFiles/ProgramSet.dir/main.cpp.obj: ../main.cpp
 

@@ -1,12 +1,29 @@
 #pragma once
 #include <iostream>
 #include "SetAbstract.h"
+#include <vector>
 
 class Set : public AbstractSet
 {
     private:
+        class Element
+        {
+        private: 
+            size_t _size;
+        public:
+            void* _content;
+            Element();
+            Element(void *element, size_t size);
+            ~Element();
+
+            void setSize(size_t size);
+            size_t getSize();
+        };
+
+
         size_t _memory;
-        void* _elements;
+        Element** _elements;
+
         unsigned int _count_elements;
     public:
 
@@ -15,9 +32,9 @@ class Set : public AbstractSet
         ~Set();
 
         class Iterator : public AbstractSet::Iterator
-    {
+        {
         private:
-
+            void* currentElement;
         public:
             Iterator();
             ~Iterator();
@@ -26,7 +43,7 @@ class Set : public AbstractSet
             bool hasNext() override;
             void goToNext() override;
             bool equals(Container::Iterator* right) override;
-    };
+        };
 
         //Methods AbstractSet
         int insert(void *element, size_t size) override;

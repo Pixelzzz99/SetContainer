@@ -19,10 +19,10 @@ int SetTests::testPassed(std::string test_name)
 
 int SetTests::simpleTest()
 {
-    std::string test_name = "Simple Test for put element in Set";
+    std::string test_name = "Simple Test for put element in Set: ";
     Mem mem(100);
     Set set(mem);
-    int element = 1;
+    int element = 234;
     int result = set.insert(&element, sizeof(int));
-    return (result == 1) ? testPassed(test_name) : testFailed(test_name);
+    return (result == 0) ? testPassed(test_name) : testFailed(test_name);
 }

@@ -78,41 +78,41 @@ include CMakeFiles/ProgramSet.dir/flags.make
 CMakeFiles/ProgramSet.dir/main.cpp.obj: CMakeFiles/ProgramSet.dir/flags.make
 CMakeFiles/ProgramSet.dir/main.cpp.obj: ../main.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\projects\Set_Container\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/ProgramSet.dir/main.cpp.obj"
-	C:\PROGRA~1\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\ProgramSet.dir\main.cpp.obj -c D:\projects\Set_Container\main.cpp
+	C:\PROGRA~1\mingw64\bin\X86_64~2.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\ProgramSet.dir\main.cpp.obj -c D:\projects\Set_Container\main.cpp
 
 CMakeFiles/ProgramSet.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ProgramSet.dir/main.cpp.i"
-	C:\PROGRA~1\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\projects\Set_Container\main.cpp > CMakeFiles\ProgramSet.dir\main.cpp.i
+	C:\PROGRA~1\mingw64\bin\X86_64~2.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\projects\Set_Container\main.cpp > CMakeFiles\ProgramSet.dir\main.cpp.i
 
 CMakeFiles/ProgramSet.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ProgramSet.dir/main.cpp.s"
-	C:\PROGRA~1\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\projects\Set_Container\main.cpp -o CMakeFiles\ProgramSet.dir\main.cpp.s
+	C:\PROGRA~1\mingw64\bin\X86_64~2.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\projects\Set_Container\main.cpp -o CMakeFiles\ProgramSet.dir\main.cpp.s
 
 CMakeFiles/ProgramSet.dir/Test.cpp.obj: CMakeFiles/ProgramSet.dir/flags.make
 CMakeFiles/ProgramSet.dir/Test.cpp.obj: ../Test.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\projects\Set_Container\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/ProgramSet.dir/Test.cpp.obj"
-	C:\PROGRA~1\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\ProgramSet.dir\Test.cpp.obj -c D:\projects\Set_Container\Test.cpp
+	C:\PROGRA~1\mingw64\bin\X86_64~2.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\ProgramSet.dir\Test.cpp.obj -c D:\projects\Set_Container\Test.cpp
 
 CMakeFiles/ProgramSet.dir/Test.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ProgramSet.dir/Test.cpp.i"
-	C:\PROGRA~1\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\projects\Set_Container\Test.cpp > CMakeFiles\ProgramSet.dir\Test.cpp.i
+	C:\PROGRA~1\mingw64\bin\X86_64~2.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\projects\Set_Container\Test.cpp > CMakeFiles\ProgramSet.dir\Test.cpp.i
 
 CMakeFiles/ProgramSet.dir/Test.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ProgramSet.dir/Test.cpp.s"
-	C:\PROGRA~1\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\projects\Set_Container\Test.cpp -o CMakeFiles\ProgramSet.dir\Test.cpp.s
+	C:\PROGRA~1\mingw64\bin\X86_64~2.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\projects\Set_Container\Test.cpp -o CMakeFiles\ProgramSet.dir\Test.cpp.s
 
 CMakeFiles/ProgramSet.dir/Set.cpp.obj: CMakeFiles/ProgramSet.dir/flags.make
 CMakeFiles/ProgramSet.dir/Set.cpp.obj: ../Set.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\projects\Set_Container\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/ProgramSet.dir/Set.cpp.obj"
-	C:\PROGRA~1\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\ProgramSet.dir\Set.cpp.obj -c D:\projects\Set_Container\Set.cpp
+	C:\PROGRA~1\mingw64\bin\X86_64~2.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\ProgramSet.dir\Set.cpp.obj -c D:\projects\Set_Container\Set.cpp
 
 CMakeFiles/ProgramSet.dir/Set.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ProgramSet.dir/Set.cpp.i"
-	C:\PROGRA~1\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\projects\Set_Container\Set.cpp > CMakeFiles\ProgramSet.dir\Set.cpp.i
+	C:\PROGRA~1\mingw64\bin\X86_64~2.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\projects\Set_Container\Set.cpp > CMakeFiles\ProgramSet.dir\Set.cpp.i
 
 CMakeFiles/ProgramSet.dir/Set.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ProgramSet.dir/Set.cpp.s"
-	C:\PROGRA~1\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\projects\Set_Container\Set.cpp -o CMakeFiles\ProgramSet.dir\Set.cpp.s
+	C:\PROGRA~1\mingw64\bin\X86_64~2.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\projects\Set_Container\Set.cpp -o CMakeFiles\ProgramSet.dir\Set.cpp.s
 
 # Object files for target ProgramSet
 ProgramSet_OBJECTS = \
