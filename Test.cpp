@@ -65,6 +65,7 @@ int SetTests::insertDiffTwoElements()
     if(result1 != result2)
         return testFailed(test_name);
     
+    /*
     Set::Iterator* iter = set.begin();
     
     while(true)
@@ -77,13 +78,28 @@ int SetTests::insertDiffTwoElements()
             continue;
         }
         break;
-    }
+    }*/
+
+    std::cout<<"Count elements in set " << set.size()<<std::endl;
     return testPassed(test_name);
 }
 
 int SetTests::insertSimilarTwoElements()
 {
-    return 0;
+    std::string test_name = "Insert two similar elements in set: ";
+    Mem mem(100);
+    Set set(mem);
+    int element1 = 123;
+    int element2 = 123;
+
+    int result1 = set.insert(&element1, sizeof(element1));
+    int result2 = set.insert(&element2, sizeof(element2));
+ 
+    std::cout<<"Count elements in set " << set.size()<<std::endl;
+    if(result1 != result2)
+        return testPassed(test_name);
+    
+    return testFailed(test_name);
 }
 
 int SetTests::insertTenRandomElements()

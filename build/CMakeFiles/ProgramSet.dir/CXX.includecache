@@ -22,6 +22,10 @@ D:/projects/Set_Container/GroupContainer.h
 Container.h
 D:/projects/Set_Container/Container.h
 
+D:/projects/Set_Container/Mem.h
+MemoryManager.h
+D:/projects/Set_Container/MemoryManager.h
+
 D:/projects/Set_Container/MemoryManager.h
 stdlib.h
 -
@@ -30,23 +34,31 @@ iostream
 list
 -
 
-D:/projects/Set_Container/Set.cpp
-Set.h
 D:/projects/Set_Container/Set.h
-iostream
--
-cstring
--
-
-D:/projects/Set_Container/Set.h
-iostream
--
 SetAbstract.h
 D:/projects/Set_Container/SetAbstract.h
+algorithm
+D:/projects/Set_Container/algorithm
+iostream
+-
 vector
 -
 
 D:/projects/Set_Container/SetAbstract.h
 GroupContainer.h
 D:/projects/Set_Container/GroupContainer.h
+
+D:/projects/Set_Container/Test.cpp
+Test.h
+D:/projects/Set_Container/Test.h
+
+D:/projects/Set_Container/Test.h
+iostream
+-
+string
+-
+Set.h
+D:/projects/Set_Container/Set.h
+Mem.h
+D:/projects/Set_Container/Mem.h
 

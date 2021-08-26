@@ -1,6 +1,8 @@
 #pragma once
-#include <iostream>
 #include "SetAbstract.h"
+
+#include "algorithm"
+#include <iostream>
 #include <vector>
 
 class Set : public AbstractSet
@@ -24,7 +26,12 @@ class Set : public AbstractSet
         size_t _memory;
         Element** _elements;
         unsigned int _count_elements;
-         
+        
+        bool unique(void* element);
+        Element* createNewElement(void* element, size_t size);
+        Element** resizeArrayOnOneSize();
+        Element** refreshElementsWithNewElement(Element* element);
+
     public:
 
         //Constructor and destructor

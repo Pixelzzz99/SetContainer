@@ -7,5 +7,6 @@ int main()
     tests->simpleTest();
     tests->memTest();
     tests->insertDiffTwoElements();
+    tests->insertSimilarTwoElements();
     return 0;
 }

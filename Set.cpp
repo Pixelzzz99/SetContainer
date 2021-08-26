@@ -92,6 +92,7 @@ Set::Set(MemoryManager &mem) : AbstractSet(mem)
     this->_count_elements = 0;
     if(mem.size() >= 0)
         this->_memory = mem.size();
+    this->_elements = new Element*[0];
 }
 
 //TODO destructor
@@ -113,23 +114,18 @@ void Set::free_mem(void * ptr)
 //TODO unique function and Sort method
 int Set::insert(void* element, size_t size)
 {
-    if(checkMemory(size)) return 1;
+    if(checkMemory(size)) return 2;
+    if(!unique(element)) return 1;
     
-    Element* newElement = static_cast<Element*>(alloc_mem(sizeof(Element)));
-    newElement->_content = alloc_mem(size);
-    newElement->setSize(size);
-    std::memcpy(newElement->_content, element, size);
- 
-    this->_elements = new Element*[_count_elements+1];
-
-    this->_elements[this->_count_elements] = newElement;
+    Element* newElement = this->createNewElement(element, size);
+    this->_elements = this->refreshElementsWithNewElement(newElement);
 
     this->_memory -= size;
     this->_count_elements++;
 
-    for(int i = 0; i < this->_count_elements; i++)
+    for(int i = 0; i <  this->_count_elements; i++)
     {
-        std::cout<<*(int*)this->_elements[i]->_content <<std::endl;
+        std::cout<< *(int*)this->_elements[i]->_content<<std::endl;
     }
 
     return 0;
@@ -137,11 +133,43 @@ int Set::insert(void* element, size_t size)
 
 int Set::checkMemory(size_t size)
 {
-    if(size <= 0 || size > this->_memory)
-    {
-        return 1;
-    }
+    if(size <= 0 || size > this->_memory) return 1;
     return 0;
+}
+
+bool Set::unique(void* element)
+{
+    if(_count_elements == 0) return 1;
+    for(int i = 0; i < _count_elements; i++)
+    {
+        if(*(int*)this->_elements[i]->_content == *(int*)element) return 0;
+    }
+    return 1;
+}
+
+Set::Element* Set::createNewElement(void* element, size_t size)
+{
+    Element* newElement = static_cast<Element*>(alloc_mem(sizeof(Element)));
+    newElement->_content = alloc_mem(size);
+    newElement->setSize(size);
+    std::memcpy(newElement->_content, element, size);
+    return newElement;
+}
+
+Set::Element** Set::resizeArrayOnOneSize()
+{
+    Element** tempElements = new Element*[_count_elements+1];
+    std::memcpy(tempElements, this->_elements, _count_elements * sizeof(Element*));
+    return tempElements;
+}
+
+Set::Element** Set::refreshElementsWithNewElement(Element* element)
+{
+    Element** elements = this->resizeArrayOnOneSize();
+    elements[_count_elements] = element;
+    std::sort(elements, elements + _count_elements + 1);
+    delete[] this->_elements;
+    return elements;
 }
 
 int Set::size()
