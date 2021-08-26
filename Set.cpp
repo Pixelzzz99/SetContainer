@@ -32,23 +32,33 @@ size_t Set::Element::getSize()
 Set::Iterator::Iterator()
 {
     this->currentElement = nullptr;
-    this->_current_index = 0;
 }
 
-Set::Iterator::Iterator(Element *element, int count_elements)
+Set::Iterator::Iterator(Element *element, Element** elements, int count_elements)
 {
     this->currentElement = element;
+    this->allElements = elements;
     this->_count_elements = count_elements;
-    this->_current_index = 0;
+
+    for(int i = 0; i < this->_count_elements; i++)
+    {
+        if(this->currentElement == this->allElements[i])
+        {
+            this->local_index = i;
+        }
+    }
 }
 
 Set::Iterator::~Iterator() = default;
 
-void Set::Iterator::setCurrentElement(Element *element, int count_elements, int index)
+Set::Element* Set::Iterator::getCurrentElement()
+{
+    return this->currentElement;
+}
+
+void Set::Iterator::setCurrentElement(Element* element)
 {
     this->currentElement = element;
-    this->_count_elements = count_elements;
-    this->_current_index = index;
 }
 
 void* Set::Iterator::getElement(size_t& size)
@@ -63,9 +73,9 @@ void* Set::Iterator::getElement(size_t& size)
 
 bool Set::Iterator::hasNext()
 {
-    if (_current_index + 1 == _count_elements)
-        return false;
     if (this->currentElement == nullptr)
+        return false;
+    if (this->allElements[this->local_index + 1] == nullptr || this->local_index+1 == this->_count_elements)
         return false;
     return true;
 }
@@ -76,7 +86,8 @@ void Set::Iterator::goToNext()
     {
         throw Container::Error("no next element");
     }
-    this->currentElement = &*(this->currentElement + 1);
+    this->currentElement = this->allElements[this->local_index + 1];
+    this->local_index++;
 }
 
 bool Set::Iterator::equals(Container::Iterator* right)
@@ -120,12 +131,6 @@ int Set::insert(void* element, size_t size)
 
     this->_memory -= size;
     this->_count_elements++;
-/*
-    for(int i = 0; i <  this->_count_elements; i++)
-    {
-        std::cout<< *(int*)this->_elements[i]->_content<<std::endl;
-    }
-*/
     return 0;
 }
 
@@ -201,7 +206,7 @@ Set::Iterator* Set::begin()
 
     if(_elements[0] == nullptr)
         return this->newIterator();
-    return new Iterator(_elements[0], this->_count_elements);
+    return new Iterator(_elements[0], _elements, this->_count_elements);
 }
 
 Set::Iterator* Set::end()
@@ -212,22 +217,39 @@ Set::Iterator* Set::end()
     if(_elements[0] == nullptr)
         return this->newIterator();
 
-    return new Iterator(_elements[_count_elements-1], this->_count_elements);
+    return new Iterator(_elements[_count_elements-1], _elements, this->_count_elements);
 }
 
 //TODO remove Method
 void Set::remove(Container::Iterator* iter)
 {
-    
+    Set::Iterator* iterator = (Set::Iterator*)iter;
+    Element* element = iterator->getCurrentElement();
+    Element** newElements = new Element*[this->_count_elements - 1];
+    for(int i = 0; i < this->_count_elements; i++)
+    {
+        newElements[i] = this->_elements[i];
+        if(this->_elements[i] == element)
+        {
+            continue;
+        }
+    }
+    this->_count_elements--;
+    iterator->goToNext();
 }
-//TODO clear Method
+
 void Set::clear()
 {
-    for(int i = 0; i < this->_count_elements; i++ )
+    int size = this->_count_elements;
+    
+    if(size == 0) return ;
+
+    for(int i = 0; i < size; i++ )
     {
+        this->_memory += this->_elements[i]->getSize();
         free_mem(this->_elements[i]->_content);
         free_mem(this->_elements[i]);
-        _count_elements--;
+        this->_count_elements--;
     }
 }
 

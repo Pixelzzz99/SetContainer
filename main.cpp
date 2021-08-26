@@ -9,5 +9,10 @@ int main()
     tests->insertDiffTwoElements();
     tests->insertSimilarTwoElements();
     tests->insertTenElements();
+    tests->emptyFunction();
+    tests->doubleClearCheck();
+    tests->iteratorCheck();
+    tests->iteratorWithMoreElements();
+    tests->iteratorWithRemoveElement();
     return 0;
 }

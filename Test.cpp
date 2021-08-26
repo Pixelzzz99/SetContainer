@@ -64,21 +64,6 @@ int SetTests::insertDiffTwoElements()
  
     if(result1 != result2)
         return testFailed(test_name);
-    
-    /*
-    Set::Iterator* iter = set.begin();
-    
-    while(true)
-    {
-        size_t size;
-        std::cout<< *(int*)iter->getElement(size)<<std::endl;
-        if(iter->hasNext())
-        {
-            iter->goToNext();
-            continue;
-        }
-        break;
-    }*/
 
     std::cout<<"Count elements in set EXPECTED 2: " << set.size()<<std::endl;
     return testPassed(test_name);
@@ -121,3 +106,153 @@ int SetTests::insertTenElements()
     return testFailed(test_name); 
 }
 
+int SetTests::emptyFunction()
+{
+    std::string test_name = "Empty function check: ";
+    Mem mem(100);
+    Set set(mem);
+    for(int i = 0; i < 12; i++)
+    {
+        set.insert(&i, sizeof(i));
+
+    }
+    std::cout<<"Count elements in set EXPECTED 12 :" << set.size()<<std::endl;
+    std::cout<<"Max bytes before clear function EXPECTED 52: "<<set.max_bytes()<<std::endl;
+    if(set.size() != 12 || set.max_bytes() != 52)
+    {
+        return testFailed(test_name);
+    }
+
+    set.clear();
+
+    std::cout<<"Count elements in set EXPECTED 0 :" << set.size()<<std::endl;
+    std::cout<<"Max bytes after clear function EXPECTED 100: "<<set.max_bytes()<<std::endl;
+    if(set.empty())
+    {
+        return testPassed(test_name);
+    }
+    return testFailed(test_name);
+}
+
+int SetTests::doubleClearCheck()
+{
+    std::string test_name = "Check double clear function: ";
+    Mem mem(100);
+    Set set(mem);
+    for(int i = 0; i < 12; i++)
+    {
+        set.insert(&i, sizeof(i));
+
+    }
+    std::cout<<"Count elements in set EXPECTED 12 :" << set.size()<<std::endl;
+    std::cout<<"Max bytes before clear function EXPECTED 52: "<<set.max_bytes()<<std::endl;
+    if(set.size() != 12 || set.max_bytes() != 52)
+    {
+        return testFailed(test_name);
+    }
+
+    set.clear();
+    std::cout<<"Count elements in set EXPECTED 0 :" << set.size()<<std::endl;
+    std::cout<<"Max bytes after clear function EXPECTED 100: "<<set.max_bytes()<<std::endl;
+    
+    set.clear();
+    std::cout<<"Second clear do nothing : Good"<<std::endl;
+    return testPassed(test_name);
+}
+
+int SetTests::iteratorCheck()
+{
+    std::string test_name = "Simple iterator checker: ";
+    Mem mem(100);
+    Set set(mem);
+    int element1 = 234;
+    int element2 = 123;
+
+    int result1 = set.insert(&element1, sizeof(element1));
+    int result2 = set.insert(&element2, sizeof(element2));
+ 
+    if(result1 != result2)
+        return testFailed(test_name);
+    
+    Set::Iterator* iter = set.begin();
+    
+    while(true)
+    {
+        size_t size;
+        std::cout<< *(int*)iter->getElement(size)<<std::endl;
+        if(iter->hasNext())
+        {
+            iter->goToNext();
+            continue;
+        }
+        break;
+    }
+
+    std::cout<<"Count elements in set EXPECTED 2: " << set.size()<<std::endl;
+    return testPassed(test_name);
+}
+
+
+int SetTests::iteratorWithMoreElements()
+{
+    std::string test_name = "Check Iterator with more Elements: ";
+    Mem mem(100);
+    Set set(mem);
+    std::vector<int> tenElements = {23, 34, 1, 2, 2, 4, 5, 5, 7, 23};
+    for(int i = 0; i < tenElements.size(); i++)
+    {
+        int result = set.insert(&tenElements[i], sizeof(int));
+    }
+    
+    std::cout<<"Count elements in set EXPECTED 7: " << set.size()<<std::endl;
+ 
+    Set::Iterator* iter = set.begin();
+    
+    while(true)
+    {
+        size_t size;
+        std::cout<< *(int*)iter->getElement(size)<<std::endl;
+        if(iter->hasNext())
+        {
+            iter->goToNext();
+            continue;
+        }
+        break;
+    }
+
+    return testPassed(test_name);
+}
+
+int SetTests::iteratorWithRemoveElement()
+{
+    std::string test_name = "Check Iterator with remove element";
+    Mem mem(100);
+    Set set(mem);
+    for(int i = 0; i < 10; i++)
+    {
+        set.insert(&i, sizeof(int));
+    }
+    Set::Iterator* iter = set.begin();
+    int delete_element=3;
+    for(int i = 0; i < 10; i++)
+    {
+        size_t size;
+        
+        if(delete_element == *(int*)iter->getElement(size))
+        {
+            set.remove(iter);
+            delete_element += 2;
+        }
+
+        if(iter->hasNext())
+        {
+            iter->goToNext();
+        }
+    }
+
+    std::cout<<"Count elements in set EXPECTED 6: " << set.size()<<std::endl;
+    if(set.size() == 6)
+        return testPassed(test_name);
+
+    return testFailed(test_name);
+}

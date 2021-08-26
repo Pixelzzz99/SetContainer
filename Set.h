@@ -42,14 +42,16 @@ class Set : public AbstractSet
         {
         private:
             int _count_elements;
-            int _current_index;
             Element* currentElement;
+            Element** allElements;
+            int local_index;
         public:
             Iterator();
-            Iterator(Element* element, int count_elements);
+            Iterator(Element* element, Element** elements, int count_elements);
             ~Iterator();
             
-            void setCurrentElement(Element* element, int count_elements, int index);
+            Element* getCurrentElement();
+            void setCurrentElement(Element* element);
 
             void* getElement(size_t& size) override;
             bool hasNext() override;

@@ -17,4 +17,9 @@ public:
     int insertDiffTwoElements();
     int insertSimilarTwoElements();
     int insertTenElements();
+    int emptyFunction();
+    int doubleClearCheck();
+    int iteratorCheck();
+    int iteratorWithMoreElements();
+    int iteratorWithRemoveElement();
 };
