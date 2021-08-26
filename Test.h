@@ -13,4 +13,8 @@ public:
     SetTests();
     ~SetTests() = default;
     int simpleTest();
+    int memTest();
+    int insertDiffTwoElements();
+    int insertSimilarTwoElements();
+    int insertTenRandomElements();
 };

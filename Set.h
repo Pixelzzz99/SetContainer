@@ -34,13 +34,15 @@ class Set : public AbstractSet
         class Iterator : public AbstractSet::Iterator
         {
         private:
+            int _count_elements;
+            int _current_index;
             Element* currentElement;
         public:
             Iterator();
-            Iterator(Element*);
+            Iterator(Element* element, int count_elements);
             ~Iterator();
             
-            void setCurrentElement(Element* element);
+            void setCurrentElement(Element* element, int count_elements, int index);
 
             void* getElement(size_t& size) override;
             bool hasNext() override;
