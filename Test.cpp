@@ -80,7 +80,7 @@ int SetTests::insertDiffTwoElements()
         break;
     }*/
 
-    std::cout<<"Count elements in set " << set.size()<<std::endl;
+    std::cout<<"Count elements in set EXPECTED 2: " << set.size()<<std::endl;
     return testPassed(test_name);
 }
 
@@ -95,15 +95,29 @@ int SetTests::insertSimilarTwoElements()
     int result1 = set.insert(&element1, sizeof(element1));
     int result2 = set.insert(&element2, sizeof(element2));
  
-    std::cout<<"Count elements in set " << set.size()<<std::endl;
+    std::cout<<"Count elements in set EXPECTED 1: " << set.size()<<std::endl;
     if(result1 != result2)
         return testPassed(test_name);
     
     return testFailed(test_name);
 }
 
-int SetTests::insertTenRandomElements()
+int SetTests::insertTenElements()
 {
-    return 0; 
+    std::string test_name = "Insert ten elements in set: ";
+    Mem mem(100);
+    Set set(mem);
+    std::vector<int> tenElements = {23, 34, 1, 2, 2, 4, 5, 5, 7, 23};
+    for(int i = 0; i < tenElements.size(); i++)
+    {
+        int result = set.insert(&tenElements[i], sizeof(int));
+        //std::cout<<std::endl;
+    }
+    
+    std::cout<<"Count elements in set EXPECTED 7: " << set.size()<<std::endl;
+    if(set.size() == 7)
+        return testPassed(test_name);
+    
+    return testFailed(test_name); 
 }
 

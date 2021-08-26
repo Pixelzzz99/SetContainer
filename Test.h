@@ -16,5 +16,5 @@ public:
     int memTest();
     int insertDiffTwoElements();
     int insertSimilarTwoElements();
-    int insertTenRandomElements();
+    int insertTenElements();
 };

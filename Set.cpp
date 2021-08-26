@@ -95,7 +95,6 @@ Set::Set(MemoryManager &mem) : AbstractSet(mem)
     this->_elements = new Element*[0];
 }
 
-//TODO destructor
 Set::~Set()
 {
     clear();
@@ -111,7 +110,6 @@ void Set::free_mem(void * ptr)
     Container::_memory.freeMem(ptr);
 }
 
-//TODO unique function and Sort method
 int Set::insert(void* element, size_t size)
 {
     if(checkMemory(size)) return 2;
@@ -122,12 +120,12 @@ int Set::insert(void* element, size_t size)
 
     this->_memory -= size;
     this->_count_elements++;
-
+/*
     for(int i = 0; i <  this->_count_elements; i++)
     {
         std::cout<< *(int*)this->_elements[i]->_content<<std::endl;
     }
-
+*/
     return 0;
 }
 
@@ -167,7 +165,10 @@ Set::Element** Set::refreshElementsWithNewElement(Element* element)
 {
     Element** elements = this->resizeArrayOnOneSize();
     elements[_count_elements] = element;
-    std::sort(elements, elements + _count_elements + 1);
+    std::sort(elements, elements + _count_elements + 1, [](Element* a, Element* b) 
+            {
+                return *(int*)a->_content < *(int*)b->_content; 
+            });
     delete[] this->_elements;
     return elements;
 }
