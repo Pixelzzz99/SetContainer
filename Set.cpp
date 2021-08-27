@@ -61,6 +61,13 @@ void Set::Iterator::setCurrentElement(Element* element)
     this->currentElement = element;
 }
 
+void Set::Iterator::setAllElements(Element** elements, int count, int index)
+{
+    this->allElements = elements;
+    this->_count_elements = count;
+    this->local_index = index;
+}
+
 void* Set::Iterator::getElement(size_t& size)
 {
     if(currentElement == nullptr)
@@ -223,19 +230,39 @@ Set::Iterator* Set::end()
 //TODO remove Method
 void Set::remove(Container::Iterator* iter)
 {
+    if(this->empty())
+        return;
     Set::Iterator* iterator = (Set::Iterator*)iter;
     Element* element = iterator->getCurrentElement();
     Element** newElements = new Element*[this->_count_elements - 1];
-    for(int i = 0; i < this->_count_elements; i++)
+    
+
+    int temp_index = 0;
+    int new_index_iterator = 0;
+    bool flag = false;
+    for(int i = 0; i < this->_count_elements - 1; i++)
     {
-        newElements[i] = this->_elements[i];
-        if(this->_elements[i] == element)
+        if(*(int*)this->_elements[temp_index]->_content == *(int*)element->_content)
         {
-            continue;
+            flag = true;
+            new_index_iterator = temp_index;
+            temp_index++;
+            iterator->goToNext();
         }
+        newElements[i] = this->_elements[temp_index];
+        
+        temp_index++;
     }
+    new_index_iterator = (!flag) ? temp_index : new_index_iterator;  
+
+    delete[] this->_elements;
+    this->_elements = newElements;
+
     this->_count_elements--;
-    iterator->goToNext();
+    this->_memory += element->getSize(); 
+    iterator->setAllElements(this->_elements, this->_count_elements,  new_index_iterator);
+    this->free_mem(element->_content);
+    this->free_mem(element);
 }
 
 void Set::clear()

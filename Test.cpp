@@ -207,11 +207,21 @@ int SetTests::iteratorWithMoreElements()
     std::cout<<"Count elements in set EXPECTED 7: " << set.size()<<std::endl;
  
     Set::Iterator* iter = set.begin();
+    std::vector<int> checker = {1, 2, 4, 5, 7, 23, 34};
     
+    int i = 0;
+
     while(true)
     {
         size_t size;
-        std::cout<< *(int*)iter->getElement(size)<<std::endl;
+        std::cout<< *(int*)iter->getElement(size)<<" ";
+
+        if(checker[i] != *(int*)iter->getElement(size))
+        {
+            return testFailed(test_name);
+        }
+        i++;
+
         if(iter->hasNext())
         {
             iter->goToNext();
@@ -219,29 +229,32 @@ int SetTests::iteratorWithMoreElements()
         }
         break;
     }
-
+    std::cout<<std::endl;
     return testPassed(test_name);
 }
 
+//TODO write correct
 int SetTests::iteratorWithRemoveElement()
 {
-    std::string test_name = "Check Iterator with remove element";
+    std::string test_name = "Check Iterator with remove element: ";
     Mem mem(100);
     Set set(mem);
     for(int i = 0; i < 10; i++)
     {
         set.insert(&i, sizeof(int));
     }
+
     Set::Iterator* iter = set.begin();
     int delete_element=3;
     for(int i = 0; i < 10; i++)
     {
         size_t size;
-        
-        if(delete_element == *(int*)iter->getElement(size))
+        int curElem =  *(int*)iter->getElement(size);
+        if(delete_element == curElem)
         {
             set.remove(iter);
             delete_element += 2;
+            continue;
         }
 
         if(iter->hasNext())
@@ -251,8 +264,129 @@ int SetTests::iteratorWithRemoveElement()
     }
 
     std::cout<<"Count elements in set EXPECTED 6: " << set.size()<<std::endl;
+    Set::Iterator* iter1 = set.begin();
+    
+    std::vector<int> checker = {0, 1, 2, 4, 6, 8};
+    int i = 0;
+    while(true)
+    {
+        size_t size;
+        std::cout<< *(int*)iter1->getElement(size)<<" ";
+
+        if(checker[i] != *(int*)iter1->getElement(size))
+        {
+            return testFailed(test_name);
+        }
+        i++;
+
+        if(iter1->hasNext())
+        {
+            iter1->goToNext();
+            continue;
+        }
+        break;
+    }
+    std::cout<<std::endl;
     if(set.size() == 6)
         return testPassed(test_name);
+    
+    
+    return testFailed(test_name);
+}
 
+
+int SetTests::removeFirstElement()
+{
+    std::string test_name = "Remove first element in set: ";
+    Mem mem(100);
+    Set set(mem);
+    for(int i=5; i < 16; i++)
+    {
+        set.insert(&i, sizeof(i));
+    }
+    size_t size;
+    Set::Iterator* iter1 = set.begin();
+    set.remove(iter1);
+    
+    std::cout<<*(int*)iter1->getElement(size)<<std::endl;
+    int nextElementAfterRemove = *(int*)iter1->getElement(size);
+    iter1 = set.begin();
+    while(true)
+    {
+        size_t size;
+        std::cout<< *(int*)iter1->getElement(size)<<" ";
+        if(iter1->hasNext())
+        {
+            iter1->goToNext();
+            continue;
+        }
+        break;
+    }
+    std::cout<<std::endl;
+    
+    std::cout<<"Count elements in set EXPECTED 10: " << set.size()<<std::endl;
+   
+    if(nextElementAfterRemove == 6 && set.size() == 10)
+        return testPassed(test_name);
+
+    return testFailed(test_name);
+}
+
+int SetTests::removeLastElement()
+{
+    std::string test_name = "Remove last element in set: ";
+    Mem mem(100);
+    Set set(mem);
+    for(int i=5; i < 16; i++)
+    {
+        set.insert(&i, sizeof(i));
+    }
+    size_t size;
+    Set::Iterator* iter1 = set.end();
+    if(*(int*)iter1->getElement(size) != 15)
+        return testFailed(test_name);
+
+
+    set.remove(iter1);
+    iter1 = set.begin();
+    while(true)
+    {
+        size_t size;
+        std::cout<< *(int*)iter1->getElement(size)<<" ";
+        if(iter1->hasNext())
+        {
+            iter1->goToNext();
+            continue;
+        }
+        break;
+    }
+    std::cout<<std::endl;
+    
+    std::cout<<"Count elements in set EXPECTED 10: " << set.size()<<std::endl;
+    if(set.size() == 10)
+        return testPassed(test_name);
+    
+
+    return testFailed(test_name);
+}
+
+int SetTests::removeAllElementsWithoutClear()
+{
+    std::string test_name = "Remove all elements without clear method: ";
+    Mem mem(100);
+    Set set(mem);
+    for(int i=5; i < 16; i++)
+    {
+        set.insert(&i, sizeof(i));
+    }
+    size_t size;
+    Set::Iterator* iter = set.begin();
+    
+    while(!set.empty())
+    {
+        set.remove(iter);    
+    }
+    if(set.empty())
+        return testPassed(test_name);
     return testFailed(test_name);
 }

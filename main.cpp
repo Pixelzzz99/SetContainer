@@ -14,5 +14,8 @@ int main()
     tests->iteratorCheck();
     tests->iteratorWithMoreElements();
     tests->iteratorWithRemoveElement();
+    tests->removeFirstElement();
+    tests->removeLastElement();
+    tests->removeAllElementsWithoutClear();
     return 0;
 }

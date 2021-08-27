@@ -22,4 +22,7 @@ public:
     int iteratorCheck();
     int iteratorWithMoreElements();
     int iteratorWithRemoveElement();
+    int removeFirstElement();
+    int removeLastElement();
+    int removeAllElementsWithoutClear();
 };
