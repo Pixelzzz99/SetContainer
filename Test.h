@@ -25,4 +25,7 @@ public:
     int removeFirstElement();
     int removeLastElement();
     int removeAllElementsWithoutClear();
+    int findFunction();
+    int findFunctionNothing();
+    int findFunctionIfSetEmpty();
 };

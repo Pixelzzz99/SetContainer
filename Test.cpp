@@ -390,3 +390,75 @@ int SetTests::removeAllElementsWithoutClear()
         return testPassed(test_name);
     return testFailed(test_name);
 }
+
+int SetTests::findFunction()
+{
+    std::string test_name = "Find method test: ";
+    Mem mem(100);
+    Set set(mem);
+
+    for(int i=20; i < 30; i++) 
+    {
+        set.insert(&i, sizeof(i));
+    }
+    int element_for_find = 23;
+    Set::Iterator* iter = set.find(&element_for_find, sizeof(element_for_find));
+    
+    size_t size;
+    int iterator_element = *(int*)iter->getElement(size);
+    if(iterator_element == element_for_find && size == sizeof(element_for_find))
+        return testPassed(test_name);
+
+    return testFailed(test_name);
+}
+
+int SetTests::findFunctionNothing()
+{
+    std::string test_name = "Find method if not finded test: ";
+    Mem mem(100);
+    Set set(mem);
+
+    for(int i=20; i < 30; i++) 
+    {
+        set.insert(&i, sizeof(i));
+    }
+    int element_for_find = 19;
+    Set::Iterator* iter = set.find(&element_for_find, sizeof(element_for_find));
+    
+    size_t size;
+    try{
+        if(iter->getElement(size) != nullptr)
+            return testFailed(test_name);
+    }
+    catch(Container::Error e)
+    {
+        std::string err_msg = "Can't give element the iterator points to an empty element";
+        if(err_msg == e.msg)
+            return testPassed(test_name);
+    }
+
+    return testFailed(test_name);
+}
+
+int SetTests::findFunctionIfSetEmpty()
+{
+    std::string test_name = "Find method if set empty test: ";
+    Mem mem(100);
+    Set set(mem);
+    int element_for_find = 2;
+    Set::Iterator* iter = set.find(&element_for_find, sizeof(element_for_find));
+    
+    size_t size;
+    try{
+        if(iter->getElement(size) != nullptr)
+            return testFailed(test_name);
+    }
+    catch(Container::Error e)
+    {
+        std::string err_msg = "Can't give element the iterator points to an empty element";
+        if(err_msg == e.msg)
+            return testPassed(test_name);
+    }
+
+    return testFailed(test_name);
+}

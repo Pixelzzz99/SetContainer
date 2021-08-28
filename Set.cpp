@@ -198,7 +198,31 @@ size_t Set::max_bytes()
 //TODO find Method
 Set::Iterator* Set::find(void* elem, size_t size)
 {
-    return new Iterator();
+    if(this->empty())
+        return new Iterator();
+    
+    Iterator* iter = this->begin();
+    size_t local_size;
+    int currentElement = 0;
+    bool success = false;
+    int count_elements = this->_count_elements;
+    while(true)
+    {
+        currentElement = *(int*)iter->getElement(local_size);
+        if(currentElement == *(int*)elem && local_size == size)
+        {
+            success = true;
+            break;
+        }
+
+        if(count_elements == 0)
+            break; 
+        
+        count_elements--;
+        if(iter->hasNext())
+            iter->goToNext();
+    }
+    return (success) ? iter : this->newIterator();
 }
 
 Set::Iterator* Set::newIterator()
@@ -227,7 +251,6 @@ Set::Iterator* Set::end()
     return new Iterator(_elements[_count_elements-1], _elements, this->_count_elements);
 }
 
-//TODO remove Method
 void Set::remove(Container::Iterator* iter)
 {
     if(this->empty())

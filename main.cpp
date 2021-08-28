@@ -17,5 +17,8 @@ int main()
     tests->removeFirstElement();
     tests->removeLastElement();
     tests->removeAllElementsWithoutClear();
+    tests->findFunction();
+    tests->findFunctionNothing();
+    tests->findFunctionIfSetEmpty();
     return 0;
 }
