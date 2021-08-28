@@ -20,5 +20,6 @@ int main()
     tests->findFunction();
     tests->findFunctionNothing();
     tests->findFunctionIfSetEmpty();
+    tests->iteratorEquals();
     return 0;
 }

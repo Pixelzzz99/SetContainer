@@ -195,7 +195,6 @@ size_t Set::max_bytes()
     return this->_memory;
 }
 
-//TODO find Method
 Set::Iterator* Set::find(void* elem, size_t size)
 {
     if(this->empty())

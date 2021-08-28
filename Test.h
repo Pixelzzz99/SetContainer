@@ -28,4 +28,5 @@ public:
     int findFunction();
     int findFunctionNothing();
     int findFunctionIfSetEmpty();
+    int iteratorEquals();
 };

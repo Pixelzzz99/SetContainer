@@ -48,10 +48,6 @@ D:/projects/Set_Container/SetAbstract.h
 GroupContainer.h
 D:/projects/Set_Container/GroupContainer.h
 
-D:/projects/Set_Container/Test.cpp
-Test.h
-D:/projects/Set_Container/Test.h
-
 D:/projects/Set_Container/Test.h
 iostream
 -
@@ -61,4 +57,8 @@ Set.h
 D:/projects/Set_Container/Set.h
 Mem.h
 D:/projects/Set_Container/Mem.h
+
+D:/projects/Set_Container/main.cpp
+Test.h
+D:/projects/Set_Container/Test.h
 

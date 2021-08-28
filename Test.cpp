@@ -462,3 +462,20 @@ int SetTests::findFunctionIfSetEmpty()
 
     return testFailed(test_name);
 }
+
+int SetTests::iteratorEquals()
+{
+    std::string test_name = "Iterator equals test: ";
+    Mem mem(100);
+    Set set(mem);
+    int newElement = 3;
+    set.insert(&newElement, sizeof(newElement));
+
+    Set::Iterator* iter1 = set.begin();
+    Set::Iterator* iter2 = set.end();
+    
+    if(iter1->equals(iter2))
+        return testPassed(test_name);
+    
+    return testFailed(test_name);
+}
